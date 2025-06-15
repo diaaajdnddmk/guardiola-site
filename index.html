@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>GUARDIOLA EXACT</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .page {
+      display: none;
+      padding: 20px;
+    }
+    .active {
+      display: block;
+    }
+    .logo img {
+      width: 120px;
+      border-radius: 50%;
+    }
+    .btn {
+      background-color: #00c28a;
+      color: white;
+      padding: 12px 25px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    input {
+      width: 80%;
+      padding: 12px;
+      margin: 8px auto;
+      display: block;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .grid img {
+      width: 60px;
+      height: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- الصفحة 1 -->
+<div id="page1" class="page active">
+  <div class="logo">
+    <img src="https://i.imgur.com/3wSBKJ3.png" alt="Logo">
+    <h2>GUARDIOLA</h2>
+  </div>
+  <p>ملاحظة السكريبت يعمل فقط إذا كنت مسجل بالكود برومو (مما يعني أنني لن أتحمل مسؤولية خسارتك إذا لم تستعمل الكود برومو) ✅⚠️</p>
+  <button class="btn" onclick="goToPage(2)">Create New Account</button>
+</div>
+
+<!-- الصفحة 2 -->
+<div id="page2" class="page">
+  <h2>GUARDIOLA EXACT</h2>
+  <input type="text" id="idInput" placeholder="iD BET">
+  <input type="password" id="passInput" placeholder="Password">
+  <button class="btn" onclick="goToPage(3)">Sign Up</button>
+</div>
+
+<!-- الصفحة 3 -->
+<div id="page3" class="page">
+  <div class="logo">
+    <img src="https://i.imgur.com/3wSBKJ3.png" alt="logo">
+    <h2>GUARDIOLA EXACT</h2>
+  </div>
+  <p>اللي عليك هو تسجيل حساب باستخدام البروموكود الخاص المذكور في التيلغرام</p>
+  <div id="appleGrid" class="grid"></div>
+  <button class="btn" onclick="shuffleApples()">START</button>
+  <button class="btn" onclick="alert('تم الإيقاف')">STOP</button>
+</div>
+
+<script>
+  function goToPage(n) {
+    for (let i = 1; i <= 3; i++) {
+      document.getElementById('page' + i).classList.remove('active');
+    }
+    document.getElementById('page' + n).classList.add('active');
+    if (n === 3) shuffleApples();
+  }
+
+  const appleImgs = [
+    "https://i.imgur.com/Nx6KcIF.png",
+    "https://i.imgur.com/3wSBKJ3.png",
+    "https://i.imgur.com/4Zkqj4U.png",
+    "https://i.imgur.com/AnwspYZ.png"
+  ];
+
+  function shuffleApples() {
+    const grid = document.getElementById("appleGrid");
+    grid.innerHTML = "";
+    let count = 6;
+    for (let i = 0; i < count; i++) {
+      const img = document.createElement("img");
+      img.src = appleImgs[Math.floor(Math.random() * appleImgs.length)];
+      grid.appendChild(img);
+    }
+  }
+</script>
+
+</body>
+</html>
